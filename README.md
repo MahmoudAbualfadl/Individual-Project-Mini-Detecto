@@ -1,28 +1,81 @@
-# Individual-Project-Mini-Detecto
+# Mini-Detecto: AI-Powered Object Detection Robot
 
-Observations from Your Model and Training:
+## Project Description
+Mini-Detecto is an advanced mechatronics project demonstrating object classification and robotic interaction using machine learning techniques.
 
-  Data Splits:
-        You split the dataset into training, validation, and testing sets using percentages (70%, 30%, 10%). However, this totals 110%, which seems incorrect. It should be adjusted to something like 70% for training, 20% for validation, and 10% for testing.
+## Objective
+Develop a robotic system capable of identifying two specific objects and pointing to them using servo motors, leveraging different machine learning approaches.
 
-Model Architecture:
-        The model is relatively simple, with a Flatten layer, followed by two dense layers (128 and 64 units), and a final output layer with a sigmoid activation function.
-        Regularization is applied with l2 for one dense layer.
-        You might benefit from adding dropout layers to reduce overfitting.
-Compilation:
-        The optimizer used is Adam with a learning rate of 0.01.
-        Binary cross-entropy is the correct loss function for binary classification.
-        The accuracy metric is appropriate.
-        
-        
-        
-Training Progress:
-        Early epochs show high loss values, indicating some initial instability.
-        The model eventually converges, achieving a training accuracy of 98.7% and validation accuracy of 98.4% in the last epoch.
-        Validation loss is relatively low, suggesting good generalization, but periodic spikes in loss (e.g., epochs 36-38) could indicate some instability or overfitting.
+## Machine Learning Approaches
 
- Suggestions for Improvement:
-        Learning Rate Scheduling: Reduce the learning rate dynamically during training. You can use callbacks like ReduceLROnPlateau.
-        Early Stopping: Introduce early stopping to avoid overfitting if validation performance stops improving.
-        Data Augmentation: Apply data augmentation (e.g., flipping, rotation) to increase dataset diversity and improve robustness.
-        Dropout Layers: Add dropout layers between dense layers for better regularization.
+### 1. Feed Forward Neural Network (ANN)
+- Architecture: Dense layers with sigmoid activation
+- Success Rate: 1.75 (175%)
+- Characteristics:
+  - Simple neural network structure
+  - Binary classification technique
+  - Preliminary machine learning approach
+
+### 2. Convolutional Neural Network (CNN)
+- Architecture:
+  - Convolutional layers: 16, 32, 64 filters
+  - Multiple MaxPooling layers
+  - Dense layers with ReLU activation
+- Performance:
+  - Training Accuracy: 95.5%
+  - Validation Accuracy: 96.09%
+  - Test Success Rate: 90%
+
+### 3. Transfer Learning with ResNet50
+- Base Model: Pre-trained ResNet50 (ImageNet weights)
+- Modifications:
+  - Frozen convolutional base
+  - Custom fully connected layers
+- Performance:
+  - Success Rate: 95%
+  - Best Validation Accuracy: 97.79%
+
+## Dataset Characteristics
+- Total Images: 1,783
+- Classes: 2 (e.g., Apple and Banana)
+- Data Distribution:
+  - Training: 60%
+  - Validation: 30%
+  - Testing: 10%
+
+## Hardware Configuration
+- Microcontroller: Arduino
+- Actuators: 2x Servo Motors
+- Sensing: USB Camera/Webcam
+- Processing Unit: Laptop/PC
+
+## Technical Features
+- Real-time object classification
+- Robotic arm pointing mechanism
+- Multi-approach machine learning comparison
+- Adaptable to different object pairs
+
+## Performance Metrics
+- Calculation Method:
+  ```
+  Success Rate = (N1 + N2) / 20
+  N1: Correct predictions for Object 1
+  N2: Correct predictions for Object 2
+  ```
+
+## Recommended Improvements
+- Implement learning rate scheduling
+- Add early stopping mechanism
+- Enhance data augmentation
+- Integrate dropout layers for regularization
+
+## Project Metadata
+- Course: MTE 438: AI in Mechatronics and Robotics
+- Institution: Faculty of Engineering
+- Department: Mechatronics Engineering
+- Instructor: Dr. Haitham El-Hussieny
+
+## Deliverables
+1. Demonstration video
+2. Comprehensive source code
+3. Comparative analysis of ML approaches
